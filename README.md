@@ -1,3 +1,9 @@
+It is a modified version for MacOSX. 
+tested in High Sierra only.
+
+Fan Zhen.
+
+
 National Geographic Photo of the Day Downloader for Linux. 
 =================
   This is a shell script I wrote to automate the process of downloading National Geographic photo of the day, and 
