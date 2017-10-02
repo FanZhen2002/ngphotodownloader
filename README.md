@@ -1,9 +1,9 @@
 It is a modified version for MacOSX.
 tested in High Sierra only.
-··
-		cd ~/Pictures/
-		git clone https://github.com/FanZhen2002/ngphotodownloader.git NGWallpapers
-····
+
+     cd ~/Pictures/
+     git clone https://github.com/FanZhen2002/ngphotodownloader.git NGWallpapers
+
 
 Fan Zhen.
 
