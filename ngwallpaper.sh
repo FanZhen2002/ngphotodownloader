@@ -35,7 +35,7 @@ img="$(curl http://www.nationalgeographic.com/photography/photo-of-the-day/ -s |
 if [ -n "$img" ]
 then
     img_base=`basename $img`
-    img_md5=`echo -n $img_base | gmd5sum | cut -f1 -d" "`
+    img_md5=`echo -n $img_base | md5 | cut -f1 -d" "`
 	img_file="$img_md5.jpg"
 
 	if [ -f "$img_file" ]
@@ -44,7 +44,7 @@ then
 	else
         curl "$img" > $img_file
 		#set the current image as wallpaper
-		osascript -e 'tell application "System Events" to set picture of every desktop to ("'"${SCRIPTPATH}/${img_file}"'" as POSIX file as alias)' 
+		osascript -e 'tell application "System Events" to set picture of every desktop to ("'"${SCRIPTPATH}/${img_file}"'" as POSIX file as alias)'
 		echo "Wallpaper downloaded successfully and saved as $img_file"
 	fi
 else
