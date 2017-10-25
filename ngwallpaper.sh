@@ -9,7 +9,7 @@
 # running after you log in the X session
 
 #check for network
-while [ -z "`curl -s --head http://google.com/ | head -n 1 | ack 'HTTP/1.[01]'`" ]
+while [ -z "`curl -s --head http://baidu.com/ | head -n 1 | ack 'HTTP/1.[01]'`" ]
 do
 	echo "Network is down!!"
 	sleep 1800
@@ -29,7 +29,7 @@ cd $BASEDIR
 #getting the image URL
 #img=`curl http://photography.nationalgeographic.com/photography/photo-of-the-day/ | grep download_link | awk -F\" '{print $4}'`
 #img="http:$(curl http://photography.nationalgeographic.com/photography/photo-of-the-day/ | awk 'found && /<\/div>/ {exit}; found ;/class="primary_photo"/ {found=1}' | grep -oP '(?<=img src=")[^"]*(?=")')"
-img="$(curl http://www.nationalgeographic.com/photography/photo-of-the-day/ -s | ack -o '(?<='\''aemLeadImage'\'': '\'')[^'\'']*')"
+img="$(curl https://www.nationalgeographic.com/photography/photo-of-the-day/ -s | ack -o '(?<='\''aemLeadImage'\'': '\'')[^'\'']*')"
 
 #check to see if there is any wallpaper to download
 if [ -n "$img" ]
