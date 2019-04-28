@@ -29,7 +29,7 @@ cd $BASEDIR
 #getting the image URL
 #img=`curl http://photography.nationalgeographic.com/photography/photo-of-the-day/ | grep download_link | awk -F\" '{print $4}'`
 #img="http:$(curl http://photography.nationalgeographic.com/photography/photo-of-the-day/ | awk 'found && /<\/div>/ {exit}; found ;/class="primary_photo"/ {found=1}' | grep -oP '(?<=img src=")[^"]*(?=")')"
-img="$(curl https://www.nationalgeographic.com/photography/photo-of-the-day/ -s | ack -o '(?<='\''aemLeadImage'\'': '\'')[^'\'']*')"
+img="$(curl https://www.nationalgeographic.com/photography/photo-of-the-day/ -s | ack -o '(?<="twitter:image:src" content=")\K[^"]*')"
 
 #check to see if there is any wallpaper to download
 if [ -n "$img" ]
@@ -42,7 +42,7 @@ then
 	then
 		echo "File already exists"
 	else
-        curl "$img" > $img_file
+        curl -o $img_file "$img" 
 		#set the current image as wallpaper
 		osascript -e 'tell application "System Events" to set picture of every desktop to ("'"${SCRIPTPATH}/${img_file}"'" as POSIX file as alias)'
 		echo "Wallpaper downloaded successfully and saved as $img_file"
